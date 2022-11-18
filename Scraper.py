@@ -1,3 +1,4 @@
+import csv
 from os import stat
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -15,14 +16,19 @@ for url in URL_list:
     print(driver.title)
 
     try:
-        main = WebDriverWait(driver, 10).until(
+        main = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.CLASS_NAME, "statsListBlock"))
         )
         stats = main.text
         x = stats.split("\n")
-        statDict =
+        statList = list(x)
+        header = statList.pop(0)
+        statDict = {}
+        while len(statList) > 1:
+            s = statList.pop(0)
+            statDict[s] = statList.pop(0)
+        print(statDict)
 
-        print(x)
 
     except:
         driver.quit()
