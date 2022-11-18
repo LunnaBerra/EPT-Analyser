@@ -29,7 +29,6 @@ for url in URL_list:
             statDict[s] = statList.pop(0)
         print(statDict)
 
-
     except:
         driver.quit()
 
