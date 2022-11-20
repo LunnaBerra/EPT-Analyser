@@ -1,4 +1,3 @@
-import csv
 from os import stat
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -7,7 +6,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 import time
-import tabulate
 
 
 def scoreTeam(playerURLList, allTime: bool):
@@ -57,8 +55,7 @@ def scoreTeam(playerURLList, allTime: bool):
         except:
             driver.quit()
 
-        try:
-            
+        try:  
             if allTime == False:
                 time.sleep(1)
                 WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//div[@class='dropDown mobile'][1]"))).click()
@@ -100,7 +97,7 @@ def scoreTeam(playerURLList, allTime: bool):
 
         except:
             driver.quit()
-
+        #TODO add calculations giving each player a score
         if position == "Forward":
             score = float(statDict["Appearances"])
         elif position == "Defender":

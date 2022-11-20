@@ -24,8 +24,10 @@ Tottenham = ["https://www.premierleague.com/players/4664/Hugo-Lloris/stats",
              "https://www.premierleague.com/players/5762/Lucas-Moura/stats",
              "https://www.premierleague.com/players/55700/Bryan-Gil/stats",
              "https://www.premierleague.com/players/24630/Richarlison/stats"]
-
+TottenhamTeam = ["https://www.premierleague.com/clubs/21/Tottenham-Hotspur/stats"]
 
 def getList(Name):
     if Name == "Tottenham":
         return Tottenham
+    if Name == "TottenhamTeam":
+        return TottenhamTeam

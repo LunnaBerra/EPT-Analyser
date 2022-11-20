@@ -1,16 +1,19 @@
 import Scraper
 import PlayerURLs
 import tabulate
+import TeamScraper
 
 
 def main():
 
-    URL1 = PlayerURLs.getList("Tottenham")
+    URL1Players = PlayerURLs.getList("Tottenham")
+    URL1Team = PlayerURLs.getList("TottenhamTeam")
     #URL1 = ["https://www.premierleague.com/players/4408/Ben-Davies/stats"]
-    playerList = Scraper.scoreTeam(URL1, False)
+    #playerList = Scraper.scoreTeam(URL1Players, False)
+    teamList = TeamScraper.scoreTeam(URL1Team,False)
 
-    header = playerList[0].keys()
-    rows = [x.values() for x in playerList]
+    header = teamList[0].keys()
+    rows = [x.values() for x in teamList]
     print(tabulate.tabulate(rows, header))
 
 
