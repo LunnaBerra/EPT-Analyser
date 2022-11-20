@@ -5,9 +5,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
 import time
 import tabulate
-def scoreTeam(playerURLList):
+
+
+def scoreTeam(playerURLList, allTime: bool):
     PATH = "C:\Program Files (x86)\chromedriver.exe"
     driver = webdriver.Chrome(PATH)
     URL_list = playerURLList
@@ -26,7 +29,8 @@ def scoreTeam(playerURLList):
     # name t-colour
         try:
             main = WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.CLASS_NAME, "playerDetails"))
+                EC.presence_of_element_located(
+                    (By.CLASS_NAME, "playerDetails"))
             )
             stats = main.text
             x = stats.split("\n")
@@ -54,7 +58,14 @@ def scoreTeam(playerURLList):
             driver.quit()
 
         try:
-            # statsListBlock
+            
+            if allTime == False:
+                time.sleep(1)
+                WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//div[@class='dropDown mobile'][1]"))).click()
+                time.sleep(0.5)
+                driver.find_element(By.XPATH, "//div[@class='dropDown mobile open']/ul[@class='dropdownList']/li[2]").click()
+                time.sleep(1)
+
             main = WebDriverWait(driver, 15).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "playerStats"))
             )
@@ -91,22 +102,21 @@ def scoreTeam(playerURLList):
             driver.quit()
 
         if position == "Forward":
-            score = float(statDict["Goals"])/float(statDict["Appearances"])
+            score = float(statDict["Appearances"])
         elif position == "Defender":
-            pass
+            score = float(statDict["Appearances"])
         elif position == "Midfielder":
-            pass
+            score = float(statDict["Appearances"])
         elif position == "Goalkeeper":
-            pass
+            score = float(statDict["Appearances"])
         else:
-            pass
+            score = 0
 
         playerSum = {"Name": name, "Number": number,
-                    "Position": position, "Score": score}
+                     "Position": position, "Score": score}
 
         playerList.append(playerSum)
         driver.quit
 
     # print(playerList)
     return playerList
-
