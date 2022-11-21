@@ -109,9 +109,9 @@ def scoreTeam(playerURLList, allTime: bool):
         elif position == "Defender":
             #TODO perfect scoring
             scoreAttack = (1+statDict["Goals with right foot"]+statDict["Goals with left foot"]+1.2*statDict["Headed goals"])/(1+statDict["Goals"])
-            scoreTeamPlay = (1+statDict["Assists"])/(1+statDict["Big Chances Created"])+((statDict["Big Chances Created"]+statDict["Crosses"]+statDict["Accurate long balls"]+1)/statDict["Passes"]+1)
+            scoreTeamPlay = (1+statDict["Assists"])/(1+statDict["Big Chances Created"])+((statDict["Big Chances Created"]+statDict["Crosses"]+statDict["Accurate long balls"]+1)/(statDict["Passes"]+1))
             scoreDiscipline = (statDict["Yellow cards"]+3*statDict["Red cards"]+1)/(statDict["Fouls"]+1)
-            scoreDefense = statDict["Tackle success %"]+statDict["Tackles"]/(statDict["Fouls"]+1) + (1+statDict["Interceptions"]+statDict["Clearances"]+1+statDict["Blocked shots"])/(1+statDict["Goals Conceded"]) + (statDict["Duels won"]+1)/(1+statDict["Duels won"] + statDict["Duels lost"]) + (statDict["Aerial battles won"]+1)/(statDict["Aerial battles won"]+(statDict["Clean sheets"]-statDict["Own goals"]-statDict["Errors leading to goal"])/statDict["Appearances"]+1)
+            scoreDefense = 0.5*(statDict["Tackle success %"]/100+statDict["Tackles"]/(statDict["Fouls"]+1) + 0.001*statDict["Tackle success %"]*(1+statDict["Interceptions"]+statDict["Clearances"]+statDict["Duels won"]+statDict["Blocked shots"]+statDict["Aerial battles won"]+statDict["Recoveries"]+statDict["Goals Conceded"])/(1+statDict["Goals Conceded"]+statDict["Duels lost"]+statDict["Aerial battles lost"]+10*statDict["Own goals"]+7*statDict["Errors leading to goal"]))
             score = ((0.5*scoreAttack + 1*scoreTeamPlay - 0.5*scoreDiscipline + 2*scoreDefense)*((1+statDict["Wins"])/(1+statDict["Appearances"])+(statDict["Wins"]+statDict["Losses"]+1)/(1+statDict["Appearances"])))*statDict["Appearances"]/100
         elif position == "Midfielder":
             score = statDict["Appearances"]

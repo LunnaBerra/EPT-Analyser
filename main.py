@@ -15,7 +15,7 @@ def main():
 
     URL1Players = PlayerURLs.getList("Tottenham")
     #URL1Team = PlayerURLs.getList("TottenhamTeam")
-    #URL1Players = ["https://www.premierleague.com/players/3960/Harry-Kane/stats"]
+    #URL1Players = ["https://www.premierleague.com/players/4112/Eric-Dier/stats"]
     playerList = PlayerScraper.scoreTeam(URL1Players, True)
     #teamList = TeamScraper.scoreTeam(URL1Team,False)
 
