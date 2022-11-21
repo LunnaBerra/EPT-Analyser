@@ -7,7 +7,7 @@ import os
 def checkLatestResults(team):
     os.chdir(r"C:\Users\simon\OneDrive\Skrivbord\FRITID\EPT Analyser\Results")
     cwd = os.getcwd()
-    print(cwd)
+    #print(cwd)
 
     browser = webdriver.Chrome()
 
@@ -44,7 +44,7 @@ def checkLatestResults(team):
                                   'Draw': draw_odds,
                                   'Away': away_odds})
 
-    print(tabulate(result_comp_1))
+    #print(tabulate(result_comp_1))
 
     browser.get(
         "https://www.oddsportal.com/soccer/england/premier-league/results/#/page/2/")

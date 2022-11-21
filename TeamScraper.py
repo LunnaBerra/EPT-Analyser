@@ -36,7 +36,6 @@ def scoreTeam(teamURLList, allTime: bool):
             stats = main.text
             x = stats.split("\n")
             statList = list(x)
-            print(stat)
             while len(statList) > 1:
                 NoN = False
                 head = statList.pop(0)
@@ -64,7 +63,6 @@ def scoreTeam(teamURLList, allTime: bool):
         except:
             driver.quit()
         # TODO add calculations giving the teams Attack and Defense a score
-        print(statDict)
         teamList.append(statDict)
         driver.quit
 
