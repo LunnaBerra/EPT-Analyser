@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 import time
+import FormCalculations
 
 
 def scoreTeam(playerURLList, allTime: bool):
@@ -100,25 +101,8 @@ def scoreTeam(playerURLList, allTime: bool):
         #TODO add calculations giving each player a score
         for k, v in statDict.items():
             statDict[k] = float(v)
-        if position == "Forward":        
-            scoreAttack = ((statDict["Shooting accuracy %"]/100+statDict["Goals per match"])/2)*(1+statDict["Goals with right foot"]+statDict["Goals with left foot"]+1.2*statDict["Headed goals"]+0.2*statDict["Penalties scored"]+0.7*statDict["Freekicks scored"])/(1+statDict["Goals"])-(1+statDict["Big chances missed"])/(1+statDict["Shots"])
-            scoreTeamPlay = (1+statDict["Assists"])/(1+statDict["Big Chances Created"])+((statDict["Big Chances Created"]+statDict["Crosses"]+1)/statDict["Passes"]+1)
-            scoreDiscipline = (statDict["Yellow cards"]+3*statDict["Red cards"]+1)/(statDict["Fouls"]+1)
-            scoreDefense = statDict["Tackles"]/(statDict["Fouls"]+1) + (1+statDict["Interceptions"]+statDict["Clearances"])/(1+statDict["Blocked shots"])
-            score = ((2*scoreAttack + 0.75*scoreTeamPlay - 0.25*scoreDiscipline + 0.5*scoreDefense)*((1+statDict["Wins"])/(1+statDict["Appearances"])+(statDict["Wins"]+statDict["Losses"]+1)/(1+statDict["Appearances"])))*statDict["Appearances"]/100
-        elif position == "Defender":
-            #TODO perfect scoring
-            scoreAttack = (1+statDict["Goals with right foot"]+statDict["Goals with left foot"]+1.2*statDict["Headed goals"])/(1+statDict["Goals"])
-            scoreTeamPlay = (1+statDict["Assists"])/(1+statDict["Big Chances Created"])+((statDict["Big Chances Created"]+statDict["Crosses"]+statDict["Accurate long balls"]+1)/(statDict["Passes"]+1))
-            scoreDiscipline = (statDict["Yellow cards"]+3*statDict["Red cards"]+1)/(statDict["Fouls"]+1)
-            scoreDefense = 0.5*(statDict["Tackle success %"]/100+statDict["Tackles"]/(statDict["Fouls"]+1) + 0.001*statDict["Tackle success %"]*(1+statDict["Interceptions"]+statDict["Clearances"]+statDict["Duels won"]+statDict["Blocked shots"]+statDict["Aerial battles won"]+statDict["Recoveries"]+statDict["Goals Conceded"])/(1+statDict["Goals Conceded"]+statDict["Duels lost"]+statDict["Aerial battles lost"]+10*statDict["Own goals"]+7*statDict["Errors leading to goal"]))
-            score = ((0.5*scoreAttack + 1*scoreTeamPlay - 0.5*scoreDiscipline + 2*scoreDefense)*((1+statDict["Wins"])/(1+statDict["Appearances"])+(statDict["Wins"]+statDict["Losses"]+1)/(1+statDict["Appearances"])))*statDict["Appearances"]/100
-        elif position == "Midfielder":
-            score = statDict["Appearances"]
-        elif position == "Goalkeeper":
-            score = statDict["Appearances"]
-        else:
-            score = 0
+        
+        score = FormCalculations.playerScore(statDict,position)
 
         playerSum = {"Name": name, "Number": number,
                      "Position": position, "Score": score}
