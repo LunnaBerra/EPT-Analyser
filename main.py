@@ -1,3 +1,4 @@
+from re import X
 import PlayerScraper
 import PlayerURLs
 import tabulate
@@ -18,6 +19,11 @@ def main():
     #URL1Players = ["https://www.premierleague.com/players/4112/Eric-Dier/stats"]
     playerList = PlayerScraper.scoreTeam(URL1Players, True)
     #teamList = TeamScraper.scoreTeam(URL1Team,False)
+
+    x = ResultsScraping.checkLatestResults("Tottenham")
+    y = FormCalculations.teamFormScore(x)
+    print(y)
+
 
     header = playerList[0].keys()
     rows = [x.values() for x in playerList]
