@@ -5,6 +5,7 @@ import tabulate
 import TeamScraper
 import ResultsScraping
 import FormCalculations
+import time
 
 
 def main():
@@ -25,17 +26,18 @@ def main():
 
     x = ResultsScraping.checkLatestResults(teamP1)
     ResultsP1 = FormCalculations.teamFormScore(x)
-    x = ResultsScraping.checkLatestResults(teamP2)
-    ResultsP2 = FormCalculations.teamFormScore(x)
-
     playerList = PlayerScraper.scoreTeam(URL1Players, False)
     PositionScoreP1 = FormCalculations.positionEval(playerList)
-    playerList = PlayerScraper.scoreTeam(URL2Players, False)
-    PositionScoreP2 = FormCalculations.positionEval(playerList)
-
     teamList = TeamScraper.scoreTeam(URL1Team, False)
     TeamScoreP1 = FormCalculations.teamScore(teamList[0])
-    teamList = TeamScraper.scoreTeam(URL2Team, False)
+
+    time.sleep(10)
+
+    x = ResultsScraping.checkLatestResults(teamP2)
+    ResultsP2 = FormCalculations.teamFormScore(x)
+    playerList = PlayerScraper.scoreTeam(URL2Players, True)
+    PositionScoreP2 = FormCalculations.positionEval(playerList)
+    teamList = TeamScraper.scoreTeam(URL2Team, True)
     TeamScoreP2 = FormCalculations.teamScore(teamList[0])
 
     ResultsScoreDiff = ResultsP1 - ResultsP2

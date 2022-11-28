@@ -36,7 +36,7 @@ def scoreTeam(playerURLList, allTime: bool):
             number = x[0]
             name = x[1]
         except:
-            driver.quit()
+            continue
         try:
             main = WebDriverWait(driver, 15).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "fixedSidebar"))
@@ -54,7 +54,7 @@ def scoreTeam(playerURLList, allTime: bool):
                 if i == "Position":
                     Ok = True
         except:
-            driver.quit()
+            continue
 
         try:  
             if allTime == False:
@@ -97,8 +97,8 @@ def scoreTeam(playerURLList, allTime: bool):
                 statDict[head] = value
 
         except:
-            driver.quit()
-        #TODO add calculations giving each player a score
+            continue
+        
         for k, v in statDict.items():
             statDict[k] = float(v)
         

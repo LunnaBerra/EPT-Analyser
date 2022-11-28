@@ -116,6 +116,9 @@ def checkLatestResults(team):
             k.pop(len(k)-2)
         n = latestGameResults[f].split(":")
 
+        if len(n) < 2:
+            continue
+
         if n[0] == n[1]:
             D = D + 1
         elif k[0] == team:

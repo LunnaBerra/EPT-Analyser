@@ -73,6 +73,6 @@ def getList(Name):
     if Name == "TottenhamTeam":
         return TottenhamTeam
     if Name == "Liverpool":
-        return Tottenham
+        return Liverpool
     if Name == "LiverpoolTeam":
-        return TottenhamTeam
+        return LiverpoolTeam
