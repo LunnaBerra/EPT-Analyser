@@ -24,10 +24,55 @@ Tottenham = ["https://www.premierleague.com/players/4664/Hugo-Lloris/stats",
              "https://www.premierleague.com/players/5762/Lucas-Moura/stats",
              "https://www.premierleague.com/players/55700/Bryan-Gil/stats",
              "https://www.premierleague.com/players/24630/Richarlison/stats"]
-TottenhamTeam = ["https://www.premierleague.com/clubs/21/Tottenham-Hotspur/stats"]
+TottenhamTeam = [
+    "https://www.premierleague.com/clubs/21/Tottenham-Hotspur/stats"]
+
+
+Liverpool = ["https://www.premierleague.com/players/20559/Alisson/stats",
+             "https://www.premierleague.com/players/4852/Adri%C3%A1n/stats",
+             "https://www.premierleague.com/players/14723/Caoimh%C3%ADn-Kelleher/stats",
+             "https://www.premierleague.com/players/68581/Harvey-Davies/stats",
+             "https://www.premierleague.com/players/5140/Virgil-van-Dijk/stats",
+             "https://www.premierleague.com/players/23593/Ibrahima-Konat%C3%A9/stats",
+             "https://www.premierleague.com/players/10651/Joe-Gomez/stats",
+             "https://www.premierleague.com/players/16006/Konstantinos-Tsimikas/stats",
+             "https://www.premierleague.com/players/10458/Andrew-Robertson/stats",
+             "https://www.premierleague.com/players/5375/Jo%C3%ABl-Matip/stats",
+             "https://www.premierleague.com/players/14732/Trent-Alexander-Arnold/stats",
+             "https://www.premierleague.com/players/125829/Calvin-Ramsay/stats",
+             "https://www.premierleague.com/players/14051/Nathaniel-Phillips/stats",
+             "https://www.premierleague.com/players/114296/Stefan-Bajcetic/stats",
+             "https://www.premierleague.com/players/73893/Luke-Chambers/stats",
+             "https://www.premierleague.com/players/51557/Jarell-Quansah/stats",
+             "https://www.premierleague.com/players/11247/Fabinho/stats",
+             "https://www.premierleague.com/players/5264/Thiago/stats",
+             "https://www.premierleague.com/players/2100/James-Milner/stats",
+             "https://www.premierleague.com/players/12316/Naby-Ke%C3%AFta/stats",
+             "https://www.premierleague.com/players/3712/Jordan-Henderson/stats",
+             "https://www.premierleague.com/players/4252/Alex-Oxlade-Chamberlain/stats",
+             "https://www.premierleague.com/players/23815/Curtis-Jones/stats",
+             "https://www.premierleague.com/players/33185/Harvey-Elliott/stats",
+             "https://www.premierleague.com/players/32289/F%C3%A1bio-Carvalho/stats",
+             "https://www.premierleague.com/players/67213/Bobby-Clark/stats",
+             "https://www.premierleague.com/players/43513/Arthur/stats",
+             "https://www.premierleague.com/players/32279/Jake-Cain/stats",
+             "https://www.premierleague.com/players/107830/Melkamu-Frauendorf/stats",
+             "https://www.premierleague.com/players/13511/Roberto-Firmino/stats",
+             "https://www.premierleague.com/players/5178/Mohamed-Salah/stats",
+             "https://www.premierleague.com/players/19758/Diogo-Jota/stats",
+             "https://www.premierleague.com/players/66669/Luis-D%C3%ADaz/stats",
+             "https://www.premierleague.com/players/70287/Darwin-N%C3%BA%C3%B1ez/stats",
+             "https://www.premierleague.com/players/121972/Ben-Doak/stats",
+             "https://www.premierleague.com/players/51561/Layton-Stewart/stats"]
+LiverpoolTeam = ["https://www.premierleague.com/clubs/10/Liverpool/stats"]
+
 
 def getList(Name):
     if Name == "Tottenham":
         return Tottenham
     if Name == "TottenhamTeam":
+        return TottenhamTeam
+    if Name == "Liverpool":
+        return Tottenham
+    if Name == "LiverpoolTeam":
         return TottenhamTeam

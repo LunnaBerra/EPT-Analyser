@@ -103,9 +103,10 @@ def scoreTeam(playerURLList, allTime: bool):
             statDict[k] = float(v)
         
         score = FormCalculations.playerScore(statDict,position)
+        score = score*statDict["Appearances"]
 
         playerSum = {"Name": name, "Number": number,
-                     "Position": position, "Score": score}
+                     "Position": position, "Score": score, "Appearances": statDict["Appearances"]}
 
         playerList.append(playerSum)
         driver.quit
