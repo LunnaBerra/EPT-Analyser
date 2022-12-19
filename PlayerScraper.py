@@ -60,7 +60,7 @@ def scoreTeam(playerURLList, allTime: bool):
             if allTime == False:
                 time.sleep(1)
                 WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//div[@class='dropDown mobile'][1]"))).click()
-                time.sleep(0.5)
+                time.sleep(1)
                 driver.find_element(By.XPATH, "//div[@class='dropDown mobile open']/ul[@class='dropdownList']/li[2]").click()
                 time.sleep(1)
 

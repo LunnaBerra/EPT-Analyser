@@ -26,18 +26,17 @@ def main():
 
     x = ResultsScraping.checkLatestResults(teamP1)
     ResultsP1 = FormCalculations.teamFormScore(x)
-    playerList = PlayerScraper.scoreTeam(URL1Players, True)
+    playerList = PlayerScraper.scoreTeam(URL1Players, False)
     PositionScoreP1 = FormCalculations.positionEval(playerList)
-    teamList = TeamScraper.scoreTeam(URL1Team, True)
+    teamList = TeamScraper.scoreTeam(URL1Team, False)
     TeamScoreP1 = FormCalculations.teamScore(teamList[0])
 
-    time.sleep(10)
 
     x = ResultsScraping.checkLatestResults(teamP2)
     ResultsP2 = FormCalculations.teamFormScore(x)
-    playerList = PlayerScraper.scoreTeam(URL2Players, True)
+    playerList = PlayerScraper.scoreTeam(URL2Players, False)
     PositionScoreP2 = FormCalculations.positionEval(playerList)
-    teamList = TeamScraper.scoreTeam(URL2Team, True)
+    teamList = TeamScraper.scoreTeam(URL2Team, False)
     TeamScoreP2 = FormCalculations.teamScore(teamList[0])
 
     ResultsScoreDiff = ResultsP1 - ResultsP2
@@ -48,13 +47,14 @@ def main():
     print(TeamScoreP2)
     k = 0
     PositionScoreDiff = []
-    while k < (len(PositionScoreP1)-1):
+
+    while k < 3:
         PositionScoreDiff.append(PositionScoreP1[k] - PositionScoreP2[k])
         k = k + 1
 
     k = 0
     TeamScoreDiff = []
-    while k < (len(TeamScoreP1)-1):
+    while k < 3:
         TeamScoreDiff.append(TeamScoreP1[k] - TeamScoreP2[k])
         k = k + 1
 
