@@ -6,13 +6,15 @@ import TeamScraper
 import ResultsScraping
 import FormCalculations
 import time
+import GUI
 
 
 def main():
-    '''
-    formDict = ResultsScraping.checkLatestResults("Tottenham")
+    gui = GUI.Ui_MainWindow()
+    ''''''
+    '''formDict = ResultsScraping.checkLatestResults("Tottenham")
     TFS = FormCalculations.teamFormScore(formDict)
-    print(TFS)
+    print(TFS)'''
     '''
     teamP1 = "Tottenham"
     teamT1 = teamP1 + "Team"
@@ -63,10 +65,11 @@ def main():
     print("TSD: ", " ", TeamScoreDiff)
 
     '''
-    header = playerList[0].keys()
+    '''header = playerList[0].keys()
     rows = [x.values() for x in playerList]
-    print(tabulate.tabulate(rows, header))
+    print(tabulate.tabulate(rows, header))'''
     '''
+'''
 
 
 if __name__ == "__main__":
