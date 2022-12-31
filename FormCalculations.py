@@ -8,8 +8,7 @@ def teamFormScore(formDict):
     if formDict["Goals Made"] == 0 and formDict["Goals Conceded"] == 0:
         FS2 = 0
     else:
-        FS2 = (formDict["Goals Made"] - formDict["Goals Conceded"]) / \
-            (formDict["Goals Made"] + formDict["Goals Conceded"])
+        FS2 = (formDict["Goals Made"] - formDict["Goals Conceded"]) / (formDict["Goals Made"] + formDict["Goals Conceded"])
 
     TFS = 100*((FS1 + FS2)/2)
     return TFS
@@ -74,13 +73,13 @@ def playerScore(statDict, position):
                         (Appearances-Wins-Losses)/Appearances)/1.5
         scoreAttack = (1*Goals/Shots + 1*Shooting_accuracy -
                        1*Big_chances_missed/Shots)/3
-        scoreTeamPlay = (1*Assists/(Crosses) +
-                         1*Big_Chances_Created/(Passes+Crosses))/2
-        scoreDiscipline = (1*Yellow_cards/Fouls + 1 *
-                           Red_cards/Fouls + 1*Offsides/Fouls)/3
-        scoreDefense = (1*Blocked_shots/Tackles + 1*Interceptions/Tackles)/2
-        score = ((scoreGeneral + scoreAttack +
-                  scoreTeamPlay - scoreDiscipline + scoreDefense)/5)
+        scoreTeamPlay = (0.5*Assists/(Crosses) +
+                         2*Big_Chances_Created/(Passes+Crosses))/2.5
+        scoreDiscipline = (0.5*Yellow_cards/Fouls + 3 *
+                           Red_cards/Fouls)/3.5
+        scoreDefense = (0.5*Blocked_shots/Tackles + 1*Interceptions/Tackles)/1.5
+        score = ((2*scoreGeneral + 1.5*scoreAttack +
+                  1*scoreTeamPlay - 0.75*scoreDiscipline + 0.75*scoreDefense)/4.5)
     elif position == "Defender":
         # General stats
         Appearances = statDict["Appearances"]
@@ -150,14 +149,14 @@ def playerScore(statDict, position):
         scoreGeneral = (1*Wins/Appearances + 0.5 *
                         (Appearances-Wins-Losses)/Appearances)/1.5
         scoreAttack = (1*Goals/Appearances)/1
-        scoreTeamPlay = (1*Assists/Crosses + 1*Assists/Through_balls + 1*Cross_accuracy +
-                         1*Big_Chances_Created/Through_balls + 1*Big_Chances_Created/Accurate_long_balls)/5
-        scoreDiscipline = (1*Yellow_cards/Fouls + 1 *
-                           Red_cards/Fouls + 1*Offsides/Fouls)/3
-        scoreDefense = (1*Clean_sheets/Appearances + 1*Tackle_success + 1*Duels_won/(Duels_won+Duels_lost) + 1 *
-                        Aerial_battles_won/(Aerial_battles_won+Aerial_battles_lost) + 1*Blocked_shots/Tackles + 1*Interceptions/Tackles)/6
-        score = ((scoreGeneral + scoreAttack + scoreTeamPlay -
-                 scoreDiscipline + scoreDefense)/5)
+        scoreTeamPlay = (1*Assists/Crosses + 1.75*Assists/Through_balls + 1*Cross_accuracy +
+                         1.5*Big_Chances_Created/Through_balls + 1.5*Big_Chances_Created/Accurate_long_balls)/6.75
+        scoreDiscipline = (0.5*Yellow_cards/Fouls + 3 *
+                           Red_cards/Fouls)/3.5
+        scoreDefense = (2*Clean_sheets/Appearances + 1.5*Tackle_success + 1.25*Duels_won/(Duels_won+Duels_lost) + 1.25 *
+                        Aerial_battles_won/(Aerial_battles_won+Aerial_battles_lost) + 1*Blocked_shots/Tackles + 1.5*Interceptions/Tackles)/8.5
+        score = ((2*scoreGeneral + 0.75*scoreAttack + 1*scoreTeamPlay -
+                 1*scoreDiscipline + 2*scoreDefense)/4.75)
     elif position == "Midfielder":
         # General stats
         Appearances = statDict["Appearances"]
